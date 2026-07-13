@@ -666,6 +666,14 @@
     backdrop-filter:blur(12px);
   }
 
+  /* 固定激活页签与顶部热线的对比度，覆盖桌面和移动端样式。 */
+  .tab-btn.active,
+  .tab-btn.active:hover,
+  .tab-btn.active:focus-visible,
+  .tab-btn.active .tab-icon,
+  .tab-btn.active .tab-label{color:#FFFFFF;}
+  .header .subtitle strong{color:#FFF0A3 !important;}
+
   .tab-btn:focus-visible,.qa-question:focus-visible,.hotline-num:focus-visible{
     outline:3px solid rgba(251,191,36,.75);
     outline-offset:3px;
