@@ -1,1204 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-<meta name="format-detection" content="telephone=yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<title>2026年南昌住房公积金缴存基数调整常见问题解答</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-<style>
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-
-  :root{
-    /* 蓝黄便签风格 */
-    --blue:#3B82F6;
-    --blue-2:#2563EB;
-    --blue-3:#1D4ED8;
-    --blue-dark:#1E3A8A;
-    --blue-tint:#EFF6FF;
-    --blue-tint-2:#DBEAFE;
-    --yellow:#F59E0B;
-    --yellow-2:#FBBF24;
-    --paper:#FFFBEB;        /* 答案区便签纸底色 */
-    --paper-2:#FEF6D8;      /* hover稍深 */
-    --yellow-tint:#FFF8E1;
-
-    --bg:#F4F7FB;
-    --surface:#FFFFFF;
-    --surface-2:#F8FAFC;
-    --ink:#1F2937;
-    --ink-2:#374151;
-    --ink-3:#6B7280;
-    --ink-4:#9CA3AF;
-    --line:#E5E7EB;
-    --line-2:#F3F4F6;
-
-    --shadow-card:0 2px 8px rgba(30,58,138,.08);
-    --shadow-hover:0 10px 28px rgba(30,58,138,.12);
-    --shadow-open:0 14px 36px rgba(30,58,138,.14);
-    --shadow-tab:0 2px 12px rgba(30,58,138,.08);
-
-    --ease:cubic-bezier(.4,0,.2,1);
-    --ease-spring:cubic-bezier(.34,1.56,.64,1);
-
-    --r-lg:16px;
-    --r-md:12px;
-    --r-sm:8px;
-  }
-
-  html{
-    font-size:16px;
-    -webkit-text-size-adjust:100%;
-    scroll-behavior:smooth;
-    scrollbar-gutter:stable;
-  }
-  body{
-    font-family:"DM Sans","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    line-height:1.65;
-    min-height:100dvh;
-    overflow-x:hidden;
-    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
-
-  /* ===== Header ===== */
-  .header{
-    background:linear-gradient(135deg,var(--blue-2),var(--blue-3));
-    padding:clamp(32px,6vw,48px) clamp(20px,5vw,32px) clamp(36px,6vw,52px);
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-  }
-  .header::before{
-    content:"";
-    position:absolute;
-    top:-40%;right:-10%;
-    width:260px;height:260px;
-    background:radial-gradient(circle,rgba(255,255,255,.18) 0%,transparent 65%);
-    border-radius:50%;
-    pointer-events:none;
-  }
-  .header::after{
-    content:"";
-    position:absolute;
-    bottom:-30%;left:-8%;
-    width:220px;height:220px;
-    background:radial-gradient(circle,rgba(251,191,36,.35) 0%,transparent 60%);
-    border-radius:50%;
-    pointer-events:none;
-  }
-  .header-inner{
-    position:relative;
-    z-index:2;
-    max-width:640px;
-    margin:0 auto;
-  }
-  .header h1{
-    font-size:clamp(22px,5.5vw,32px);
-    font-weight:700;
-    line-height:1.45;
-    color:#FFFFFF;
-    margin-bottom:clamp(14px,2.8vw,18px);
-    letter-spacing:0;
-  }
-  .header .subtitle{
-    font-size:clamp(12px,2.8vw,13px);
-    color:rgba(255,255,255,.92);
-    line-height:1.75;
-    max-width:520px;
-    margin:0 auto;
-    word-wrap:break-word;
-    overflow-wrap:break-word;
-  }
-  .header .subtitle strong{
-    color:var(--yellow-2);
-    font-weight:600;
-  }
-
-  /* ===== Tabs ===== */
-  .tab-container{
-    max-width:720px;
-    margin:-26px auto 0;
-    padding:0 clamp(16px,4vw,24px);
-    position:relative;
-    z-index:5;
-  }
-  .tabs{
-    display:flex;
-    gap:5px;
-    background:var(--surface);
-    border-radius:var(--r-lg);
-    box-shadow:var(--shadow-tab);
-    padding:6px;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-    border:1px solid var(--line);
-  }
-  .tabs::-webkit-scrollbar{display:none;}
-  .tab-btn{
-    flex:1 1 0;
-    min-width:0;
-    padding:clamp(10px,2.2vw,12px) clamp(8px,1.6vw,10px);
-    background:transparent;
-    border:none;
-    border-radius:var(--r-md);
-    cursor:pointer;
-    font-family:inherit;
-    font-size:clamp(12px,2.6vw,13px);
-    font-weight:500;
-    color:var(--ink-3);
-    transition:all .3s var(--ease);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    white-space:nowrap;
-    position:relative;
-  }
-  .tab-btn .tab-icon{
-    font-size:clamp(15px,3.2vw,17px);
-    line-height:1;
-    flex-shrink:0;
-    opacity:.7;
-    transition:all .3s var(--ease);
-  }
-  .tab-btn .tab-label{
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-  .tab-btn:hover{
-    color:var(--ink);
-    background:var(--surface-2);
-  }
-  .tab-btn:hover .tab-icon{opacity:1;}
-  .tab-btn.active{
-    color:#FFFFFF;
-    background:var(--blue);
-    box-shadow:0 3px 10px rgba(37,99,235,.3);
-  }
-  .tab-btn.active .tab-icon{opacity:1;}
-  .tab-btn.active .tab-label{font-weight:600;}
-  .tab-btn:active{transform:scale(.96);}
-
-  /* ===== Content ===== */
-  .content-wrapper{
-    max-width:720px;
-    margin:0 auto;
-    padding:clamp(16px,3vw,24px) clamp(16px,4vw,24px) clamp(36px,5vw,56px);
-  }
-  .tab-panel{display:none;}
-  .tab-panel.active{
-    display:block;
-    animation:fadeIn .35s var(--ease);
-  }
-  @keyframes fadeIn{
-    from{opacity:0;transform:translateY(8px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-
-  .qa-list{
-    display:flex;
-    flex-direction:column;
-    gap:clamp(12px,2vw,16px);
-  }
-
-  /* ===== Q&A Card — 便签纸风格 ===== */
-  .qa-card{
-    background:var(--surface);
-    border-radius:var(--r-lg);
-    overflow:hidden;
-    transition:all .3s var(--ease);
-    box-shadow:var(--shadow-card);
-    position:relative;
-  }
-  .qa-card:hover{
-    box-shadow:var(--shadow-hover);
-    transform:translateY(-2px);
-  }
-  .qa-card.open{
-    box-shadow:var(--shadow-open);
-  }
-
-  /* 蓝色顶条 + 白色圆点 */
-  .blue-strip{
-    height:14px;
-    background:linear-gradient(90deg,var(--blue),var(--blue-2));
-    position:relative;
-  }
-  .blue-strip::before{
-    content:"";
-    position:absolute;
-    left:18px;
-    top:50%;
-    transform:translateY(-50%);
-    width:8px;
-    height:8px;
-    background:#FFFFFF;
-    border-radius:50%;
-    box-shadow:0 1px 3px rgba(0,0,0,.2);
-  }
-
-  .qa-question{
-    padding:clamp(16px,3.5vw,20px) clamp(18px,3.5vw,22px);
-    cursor:pointer;
-    display:flex;
-    align-items:flex-start;
-    gap:clamp(12px,2.5vw,14px);
-    user-select:none;
-    background:var(--surface);
-    transition:all .3s var(--ease);
-  }
-  .q-badge{
-    flex-shrink:0;
-    width:clamp(28px,5.5vw,32px);
-    height:clamp(28px,5.5vw,32px);
-    background:var(--blue-tint);
-    color:var(--blue-2);
-    border-radius:var(--r-sm);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:clamp(13px,2.8vw,14px);
-    font-weight:700;
-    margin-top:1px;
-    transition:all .3s var(--ease);
-  }
-  .qa-card.open .q-badge{
-    background:var(--blue);
-    color:#FFFFFF;
-    border-color:transparent;
-    box-shadow:0 5px 12px rgba(37,99,235,.2);
-  }
-  .q-text{
-    flex:1;
-    min-width:0;
-    font-size:clamp(14.5px,3.3vw,16px);
-    font-weight:600;
-    color:var(--ink);
-    line-height:1.55;
-    word-wrap:break-word;
-    overflow-wrap:break-word;
-  }
-  .q-arrow{
-    flex-shrink:0;
-    width:18px;height:18px;
-    margin-top:4px;
-    color:var(--ink-4);
-    transition:all .3s var(--ease);
-  }
-  .qa-card.open .q-arrow{
-    transform:rotate(180deg);
-    color:var(--blue);
-  }
-
-  /* 答案区 — 黄色便签纸 */
-  .qa-answer{
-    max-height:0;
-    overflow:hidden;
-    transition:max-height .4s var(--ease);
-    background:var(--paper);
-  }
-  .qa-card.open .qa-answer{max-height:1600px;}
-  .qa-answer-inner{
-    position:relative;
-    padding:clamp(18px,3.5vw,22px) clamp(18px,3.5vw,22px) clamp(18px,3.5vw,22px) calc(clamp(28px,5.5vw,32px) + clamp(12px,2.5vw,14px) + clamp(18px,3.5vw,22px));
-    font-size:clamp(13.5px,3vw,15px);
-    color:var(--ink-2);
-    line-height:1.85;
-    word-wrap:break-word;
-    overflow-wrap:break-word;
-  }
-  .qa-answer-inner strong{
-    color:var(--ink);
-    font-weight:600;
-  }
-  .answer-header{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:12px;
-  }
-  .qa-answer-inner .answer-label{
-    color:var(--blue-2);
-    font-weight:700;
-    font-size:1.08em;
-  }
-  .answer-line{
-    flex:1;
-    height:1px;
-    background:linear-gradient(90deg,var(--blue),transparent);
-    opacity:.4;
-  }
-  .qa-answer-inner .highlight{
-    background:var(--yellow-tint);
-    padding:2px 8px;
-    border-radius:4px;
-    color:#92400E;
-    font-weight:600;
-  }
-  .qa-answer-inner .formula{
-    display:inline-block;
-    max-width:100%;
-    background:var(--surface);
-    border:1px solid var(--line);
-    padding:10px 16px;
-    border-radius:var(--r-sm);
-    font-weight:600;
-    color:var(--blue-dark);
-    margin:8px 0;
-    font-size:clamp(12.5px,2.9vw,14px);
-    word-break:break-word;
-    overflow-wrap:break-word;
-    font-variant-numeric:tabular-nums;
-  }
-  .qa-answer-inner .disclaimer{
-    display:flex;
-    align-items:flex-start;
-    gap:6px;
-    margin-top:16px;
-    padding-top:12px;
-    border-top:1px solid rgba(0,0,0,.08);
-    font-size:clamp(11px,2.4vw,11.5px);
-    color:#9CA3AF;
-    line-height:1.65;
-  }
-  .qa-answer-inner .disclaimer svg{
-    flex-shrink:0;
-    width:13px;height:13px;
-    margin-top:2px;
-    opacity:.6;
-  }
-
-  /* 黄色便签装饰 — 位于答案正文内 */
-  .sticky-note{
-    position:absolute;
-    top:14px;
-    right:14px;
-    width:56px;
-    height:18px;
-    background:linear-gradient(135deg,var(--yellow-2),var(--yellow));
-    border-radius:3px;
-    transform:rotate(8deg);
-    box-shadow:0 3px 10px rgba(245,158,11,.35);
-    opacity:.95;
-    pointer-events:none;
-    z-index:3;
-  }
-
-  /* Query steps */
-  .query-steps{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:6px;
-    margin:12px 0;
-  }
-  .query-step{
-    background:var(--surface);
-    color:var(--ink-2);
-    padding:6px 12px;
-    border-radius:var(--r-sm);
-    font-size:clamp(11.5px,2.6vw,12.5px);
-    font-weight:500;
-    border:1px solid var(--line);
-    white-space:nowrap;
-  }
-  .query-arrow{
-    color:var(--blue);
-    font-size:12px;
-    flex-shrink:0;
-    opacity:.5;
-    font-weight:600;
-  }
-
-  /* ===== Footer ===== */
-  .footer{
-    text-align:center;
-    padding:clamp(24px,4vw,36px) clamp(16px,3vw,24px) clamp(32px,5vw,48px);
-  }
-  .footer .hotline-card{
-    display:inline-flex;
-    flex-direction:column;
-    align-items:center;
-    gap:6px;
-    background:var(--surface);
-    padding:clamp(16px,3vw,20px) clamp(28px,5vw,40px);
-    border-radius:var(--r-lg);
-    box-shadow:var(--shadow-card);
-    border:1px solid var(--line);
-    margin-bottom:14px;
-    transition:all .3s var(--ease);
-  }
-  .footer .hotline-card:hover{
-    box-shadow:var(--shadow-hover);
-    transform:translateY(-2px);
-  }
-  .footer .hotline-label{
-    font-size:clamp(10px,2.2vw,11px);
-    letter-spacing:.1em;
-    color:var(--ink-3);
-    font-weight:500;
-  }
-  .footer .hotline-num{
-    font-size:clamp(17px,4vw,21px);
-    font-weight:700;
-    color:var(--yellow-2) !important;
-    -webkit-text-fill-color:var(--yellow-2);
-    letter-spacing:.02em;
-    text-decoration:none !important;
-    font-variant-numeric:tabular-nums;
-  }
-  .footer .hotline-num:visited,
-  .footer .hotline-num:hover,
-  .footer .hotline-num:active{color:var(--yellow-2) !important;}
-  .footer .meta{
-    font-size:clamp(10px,2.2vw,11px);
-    color:var(--ink-4);
-    letter-spacing:.03em;
-  }
-
-  /* ===== Responsive ===== */
-  @media(max-width:768px){
-    .tab-btn{padding:9px 6px;gap:4px;}
-    .tab-btn .tab-icon{font-size:15px;}
-    .tab-btn .tab-label{font-size:12px;}
-  }
-
-  @media(max-width:480px){
-    body{font-size:15px;}
-    .header{padding:26px 16px 34px;}
-    .header h1{font-size:20px;line-height:1.45;}
-    .header .subtitle{font-size:12px;line-height:1.7;}
-    .tab-container{margin-top:-22px;padding:0 12px;}
-    .tabs{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:5px;
-      padding:5px;
-      border-radius:var(--r-lg);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102a43" />
+  <title>Lingbot 2.0｜项目排期汇报</title>
+  <style>
+    :root{
+      --navy:#102a43;
+      --navy-2:#183b56;
+      --blue:#2f6fed;
+      --blue-soft:#eaf2ff;
+      --ink:#172b4d;
+      --muted:#6b7c93;
+      --line:#dfe7f1;
+      --paper:#f5f8fc;
+      --white:#fff;
+      --gold:#c9942e;
+      --gold-soft:#fff7e5;
+      --green:#27866b;
+      --shadow:0 14px 40px rgba(16,42,67,.09);
+      --radius:18px;
     }
-    .tab-btn{
-      padding:11px 8px;
-      border-radius:var(--r-md);
-      gap:5px;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    a{color:inherit;text-decoration:none}
+    .shell{max-width:1240px;margin:auto;padding:0 28px}
+    .hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:58px 0 84px}
+    .hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%;pointer-events:none}
+    .hero:before{width:430px;height:430px;right:-150px;top:-220px}
+    .hero:after{width:250px;height:250px;left:-120px;bottom:-170px}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.45fr .8fr;gap:56px;align-items:end}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:#b9d3ee;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+    .eyebrow i{width:28px;height:2px;background:var(--gold);display:inline-block}
+    h1{margin:18px 0 12px;font-size:clamp(34px,5vw,58px);line-height:1.15;letter-spacing:-.04em;font-weight:750}
+    .hero p{max-width:690px;color:#c9d8e8;margin:0;font-size:17px}
+    .hero-aside{border-left:1px solid rgba(255,255,255,.2);padding-left:28px}
+    .hero-aside .label{color:#9db5cc;font-size:12px;letter-spacing:.08em}
+    .hero-aside .date{font-size:31px;font-weight:700;letter-spacing:-.03em;margin:6px 0 2px}
+    .hero-aside .sub{color:#c9d8e8;font-size:13px}
+    .nav{margin-top:-28px;position:relative;z-index:3}
+    .nav-inner{display:flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:var(--shadow);overflow:auto}
+    .nav a{white-space:nowrap;border-radius:9px;padding:9px 15px;color:var(--muted);font-weight:650;font-size:13px}
+    .nav a:hover,.nav a.active{background:var(--blue-soft);color:var(--blue)}
+    main{padding:54px 0 80px}
+    .section{scroll-margin-top:30px;margin-bottom:72px}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:22px}
+    .kicker{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    h2{font-size:28px;line-height:1.25;margin:7px 0 0;letter-spacing:-.025em}
+    .section-head p{max-width:520px;color:var(--muted);margin:0;font-size:14px}
+    .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .summary-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px;box-shadow:0 5px 18px rgba(16,42,67,.04)}
+    .summary-card .num{font-size:30px;font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.04em}
+    .summary-card .name{margin-top:8px;font-weight:700}
+    .summary-card .note{color:var(--muted);font-size:12px;margin-top:2px}
+    .summary-card.accent{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .summary-card.accent .num{color:#fff}.summary-card.accent .note{color:#b9d3ee}
+    .gantt-panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 6px 20px rgba(16,42,67,.045);overflow:auto}
+    .gantt{min-width:900px}
+    .gantt-head,.gantt-row{display:grid;grid-template-columns:170px repeat(15,minmax(36px,1fr));gap:2px;align-items:center}
+    .gantt-head{margin-bottom:8px;color:#8494a8;font-size:10px;font-weight:750;text-align:center}
+    .gantt-head .month{grid-column:span 2;text-align:left;color:#556b82;font-size:11px;letter-spacing:.08em}.gantt-head .month.sep{grid-column:span 6}.gantt-head .month.oct{grid-column:span 4}.gantt-head .month.nov{grid-column:span 3}
+    .gantt-row{min-height:44px;margin:6px 0}.gantt-label{font-size:13px;font-weight:700;padding-right:12px}.gantt-label small{display:block;color:var(--muted);font-weight:500;font-size:10px;margin-top:1px}
+    .gantt-cell{height:34px;background:#f4f7fb;border-radius:4px}.gantt-bar{height:34px;border-radius:5px;background:linear-gradient(90deg,#2f6fed,#5e8df4);display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;box-shadow:0 4px 10px rgba(47,111,237,.18)}
+    .gantt-bar.green{background:linear-gradient(90deg,#27866b,#45a88b);box-shadow:0 4px 10px rgba(39,134,107,.14)}.gantt-bar.gold{background:linear-gradient(90deg,#bd841f,#daa73c);box-shadow:0 4px 10px rgba(189,132,31,.14);min-width:150px}.gantt-milestone{min-width:150px}
+    .gantt-milestone{height:34px;position:relative;display:flex;align-items:center;justify-content:center;background:#fff3d4;border:1px solid #ebcc85;border-radius:5px;color:#916015;font-size:10px;font-weight:800}.gantt-milestone:before{content:"";position:absolute;left:50%;top:-8px;height:50px;border-left:2px dashed #c9942e;opacity:.7}
+    .gantt-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;color:#677b91;font-size:12px}.gantt-legend span{display:flex;align-items:center;gap:6px}.gantt-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;background:#2f6fed}.gantt-legend i.green{background:#27866b}.gantt-legend i.gold{background:#c9942e}
+    .timeline{position:relative;padding:10px 0 0}
+    .timeline:before{content:"";position:absolute;left:28px;top:26px;bottom:28px;width:2px;background:linear-gradient(var(--blue),#b8c9e5 85%,transparent)}
+    .milestone{display:grid;grid-template-columns:58px 1fr;gap:18px;position:relative;margin-bottom:16px}
+    .dot{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#fff;border:6px solid var(--blue-soft);color:var(--blue);font-weight:800;font-size:15px;box-shadow:0 0 0 1px #c9dcff;z-index:1}
+    .milestone.current .dot{background:var(--blue);border-color:#dce8ff;color:#fff;box-shadow:0 0 0 1px var(--blue)}
+    .milestone-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 23px;box-shadow:0 6px 20px rgba(16,42,67,.045)}
+    .milestone-top{display:flex;justify-content:space-between;gap:18px;align-items:start}
+    .phase{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.12em}
+    .milestone h3{margin:3px 0 4px;font-size:20px;letter-spacing:-.02em}
+    .period{white-space:nowrap;background:var(--gold-soft);color:#9b6a18;border:1px solid #f0dfb5;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:750}
+    .milestone-card p{margin:9px 0 14px;color:var(--muted);font-size:14px}
+    .deliverables{display:flex;flex-wrap:wrap;gap:7px}
+    .deliverables span{background:#f4f7fb;color:#49627e;border:1px solid #e3ebf4;border-radius:6px;padding:4px 9px;font-size:12px}
+    .owner-line{margin-top:13px;padding-top:11px;border-top:1px solid #edf1f6;color:#6b7c93;font-size:12px}.owner-line b{color:var(--ink);margin-right:6px}
+    .columns{display:grid;grid-template-columns:1.08fr .92fr;gap:20px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:0 6px 20px rgba(16,42,67,.045)}
+    .panel h3{margin:0 0 17px;font-size:18px}
+    .scope-list{display:grid;gap:10px}
+    .scope-item{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:10px 0;border-bottom:1px solid #edf1f6}.scope-item:last-child{border-bottom:0}
+    .scope-icon{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:13px}
+    .scope-item b{display:block;font-size:14px}.scope-item span{color:var(--muted);font-size:12px}
+    .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .team{padding:14px;background:#f8fafc;border:1px solid #e8eef5;border-radius:12px}
+    .team-title{font-weight:750;font-size:14px;display:flex;justify-content:space-between;gap:8px}.team-title em{font-style:normal;color:var(--blue);font-size:11px}
+    .team p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+    .people{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.people span{background:#fff;border:1px solid #dae5f1;border-radius:5px;padding:3px 7px;font-size:11px;color:#49627e}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .flow-step{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 17px}.flow-step:after{content:"→";position:absolute;right:-18px;top:38px;color:#9db3c9;font-size:20px}.flow-step:nth-child(3n):after{display:none}
+    .flow-step .index{color:var(--gold);font-weight:800;font-size:12px}.flow-step b{display:block;margin-top:3px;font-size:15px}.flow-step p{margin:5px 0 0;color:var(--muted);font-size:12px}
+    footer{border-top:1px solid var(--line);padding:23px 0 40px;color:#8998aa;font-size:12px;text-align:center}
+    @media(max-width:860px){.hero-grid,.columns{grid-template-columns:1fr;gap:28px}.hero-aside{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:18px 0 0}.summary-grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:10px}.flow{grid-template-columns:1fr 1fr}.flow-step:nth-child(2n):after{display:none}.gantt-panel{padding:16px}.gantt{min-width:0}.gantt-head{display:none}.gantt-row{display:grid;grid-template-columns:1fr;gap:6px;min-height:0;margin:14px 0}.gantt-bar,.gantt-milestone{grid-column:1!important;width:100%;min-width:0;height:auto;min-height:34px;padding:8px 10px;white-space:normal;justify-content:flex-start}.gantt-milestone:before{display:none}}
+    @media(max-width:580px){.shell{padding:0 16px}.hero{padding:42px 0 68px}h1{font-size:35px}.hero p{font-size:15px}.summary-grid{grid-template-columns:1fr 1fr;gap:9px}.summary-card{padding:16px}.summary-card .num{font-size:24px}.timeline:before{left:22px}.milestone{grid-template-columns:46px 1fr;gap:12px}.dot{width:46px;height:46px;border-width:5px;font-size:13px}.milestone-top{display:block}.period{display:inline-block;margin-top:8px}.milestone-card{padding:17px}.milestone h3{font-size:18px}.team-grid,.flow{grid-template-columns:1fr}.flow-step:after{display:none}.panel{padding:18px}}
+    @media(min-width:1280px){
+      .nav{position:fixed;left:22px;top:50%;transform:translateY(-50%);width:148px;margin:0;padding:0;z-index:20}
+      .hero .shell,main.shell,footer .shell{max-width:none;margin-left:190px;margin-right:40px}
+      .nav-inner{display:flex;flex-direction:column;align-items:stretch;gap:4px;padding:8px;border-radius:14px;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);box-shadow:0 14px 34px rgba(16,42,67,.12)}
+      .nav a{padding:10px 12px;text-align:left;font-size:12px}
+      .nav a:before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:#c8d5e4;vertical-align:middle;margin:0 8px 2px 1px}
+      .nav a.active:before{background:var(--blue);box-shadow:0 0 0 3px #dce8ff}
+      .nav a.active{background:var(--blue-soft)}
     }
-    .tab-btn .tab-icon{font-size:15px;}
-    .tab-btn .tab-label{font-size:12px;}
-    .blue-strip{height:12px;}
-    .blue-strip::before{left:14px;width:6px;height:6px;}
-    .sticky-note{width:46px;height:15px;top:10px;right:10px;}
-    .qa-question{padding:14px;gap:8px;}
-    .q-badge{width:24px;height:24px;font-size:11px;border-radius:6px;}
-    .q-text{font-size:14px;line-height:1.55;}
-    .qa-answer-inner{
-      font-size:13.5px;
-      padding:14px 14px 14px calc(24px + 8px + 14px);
-      line-height:1.8;
-    }
-    .qa-answer-inner .formula{font-size:12.5px;padding:8px 12px;}
-    .query-steps{flex-direction:column;align-items:stretch;gap:4px;}
-    .query-step{text-align:center;padding:8px 12px;font-size:12px;}
-    .query-arrow{text-align:center;transform:rotate(90deg);font-size:11px;}
-    .footer .hotline-card{padding:14px 24px;}
-    .footer .hotline-num{font-size:18px;}
-  }
-
-  @media(max-width:360px){
-    .header h1{font-size:18px;}
-    .header .subtitle{font-size:11.5px;}
-    .tabs{gap:4px;padding:4px;}
-    .tab-btn{padding:10px 6px;}
-    .tab-btn .tab-label{font-size:11px;}
-    .tab-btn .tab-icon{font-size:14px;}
-    .qa-question{padding:13px 12px;gap:7px;}
-    .qa-answer-inner{padding:13px 12px 13px calc(22px + 7px + 12px);font-size:13px;}
-    .sticky-note{width:40px;height:14px;top:10px;right:10px;}
-  }
-
-  @media(max-width:896px) and (orientation:landscape){
-    .header{padding:22px 24px clamp(30px,6vw,42px);}
-  }
-
-  /* ===== 质感升级：保留原有蓝白黄便签语言 ===== */
-  body{
-    background:
-      radial-gradient(circle at 10% 0%,rgba(59,130,246,.09),transparent 28rem),
-      linear-gradient(rgba(37,99,235,.025) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(37,99,235,.025) 1px,transparent 1px),
-      #f5f7fb;
-    background-size:auto,32px 32px,32px 32px,auto;
-  }
-  .header{
-    min-height:310px;
-    display:flex;
-    align-items:center;
-    padding:62px 32px 88px;
-    background:
-      radial-gradient(circle at 80% 20%,rgba(255,255,255,.18),transparent 22%),
-      radial-gradient(circle at 18% 88%,rgba(250,204,21,.22),transparent 28%),
-      linear-gradient(125deg,#173da8 0%,#285bea 56%,#3b72f4 100%);
-    box-shadow:inset 0 -1px 0 rgba(255,255,255,.16);
-  }
-  .header::before{
-    top:24px;right:clamp(20px,7vw,100px);
-    width:160px;height:160px;
-    border:1px solid rgba(255,255,255,.15);
-    background:transparent;
-  }
-  .header::after{
-    width:360px;height:360px;
-    left:-120px;bottom:-230px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.035);
-  }
-  .header-inner{max-width:880px;}
-  .header h1{
-    max-width:760px;
-    margin:0 auto 16px;
-    font-size:clamp(26px,3.4vw,42px);
-    line-height:1.35;
-    letter-spacing:-.025em;
-    text-shadow:0 4px 24px rgba(9,30,96,.22);
-  }
-  .header .subtitle{max-width:680px;font-size:13px;color:rgba(255,255,255,.78);}
-  .header .subtitle strong{
-    color:#fff0a3 !important;
-    -webkit-text-fill-color:#fff0a3;
-    padding-bottom:2px;
-    border-bottom:1px solid rgba(255,240,163,.52);
-  }
-  .header .subtitle strong a{
-    color:#fff0a3 !important;
-    -webkit-text-fill-color:#fff0a3;
-    text-decoration:none;
-  }
-  .tab-container{
-    max-width:920px;
-    margin-top:-34px;
-    padding:0 24px;
-    position:sticky;
-    top:12px;
-  }
-  .tabs{
-    gap:4px;
-    padding:7px;
-    border-color:rgba(255,255,255,.82);
-    border-radius:18px;
-    background:rgba(255,255,255,.88);
-    box-shadow:0 16px 40px rgba(24,53,130,.14),0 2px 8px rgba(24,53,130,.06);
-    backdrop-filter:blur(18px) saturate(1.2);
-  }
-  .tab-btn{min-height:48px;border-radius:12px;color:#64748b;}
-  .tab-btn:hover{background:#f1f5fb;color:#1e3a8a;}
-  .tab-btn.active{
-    background:linear-gradient(135deg,#2457df,#3974f4);
-    color:#FFFFFF !important;
-    box-shadow:0 6px 16px rgba(37,99,235,.25),inset 0 1px 0 rgba(255,255,255,.2);
-  }
-  .tab-btn.active .tab-label{color:#FFFFFF !important;}
-  .content-wrapper{max-width:920px;padding:30px 24px 64px;}
-  .qa-list{gap:18px;}
-  .tab-panel,.qa-card{overflow-anchor:none;}
-  .qa-card{
-    border:1px solid rgba(218,225,236,.88);
-    border-radius:14px;
-    box-shadow:0 5px 18px rgba(30,58,138,.055),0 1px 2px rgba(30,58,138,.04);
-  }
-  .qa-card::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:inherit;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
-    pointer-events:none;
-  }
-  .qa-card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(30,58,138,.1);}
-  .qa-card.open{border-color:rgba(59,130,246,.24);box-shadow:0 18px 42px rgba(30,58,138,.12);}
-  .blue-strip{height:8px;background:linear-gradient(90deg,#315fe8 0%,#497cf6 70%,#80a5ff 100%);}
-  .blue-strip::before{
-    left:20px;width:7px;height:7px;
-    border:2px solid rgba(255,255,255,.95);
-    background:transparent;
-    box-shadow:none;
-  }
-  .qa-question{min-height:76px;padding:20px 22px;align-items:center;}
-  .q-badge{
-    width:32px;height:32px;margin:0;
-    border:1px solid #dbe8ff;
-    border-radius:9px;
-    background:#f2f6ff;
-  }
-  .qa-card.open .q-badge{background:var(--blue);color:#FFFFFF;border-color:transparent;box-shadow:0 5px 12px rgba(37,99,235,.2);}
-  .q-text{font-size:15.5px;letter-spacing:.005em;}
-  .q-arrow{width:17px;height:17px;margin:0;}
-  .qa-answer{
-    background:
-      linear-gradient(rgba(246,196,57,.06) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(246,196,57,.035) 1px,transparent 1px),
-      #fffdf3;
-    background-size:26px 26px,26px 26px,auto;
-    border-top:1px solid rgba(232,210,127,.32);
-  }
-  .qa-answer-inner{padding-top:24px;padding-bottom:24px;line-height:1.9;}
-  .answer-line{background:linear-gradient(90deg,#3b6cec,rgba(59,108,236,.08));opacity:.58;}
-  .qa-answer-inner .highlight{
-    background:linear-gradient(transparent 52%,rgba(251,191,36,.28) 52%);
-    padding:0 3px;
-    border-radius:0;
-    color:#784c06;
-  }
-  .qa-answer-inner .formula{
-    border-color:rgba(59,130,246,.16);
-    background:rgba(255,255,255,.72);
-    box-shadow:inset 3px 0 0 #3b6cec;
-  }
-  .sticky-note{
-    top:16px;right:20px;width:64px;height:18px;
-    border-radius:1px;
-    background:linear-gradient(90deg,rgba(255,224,95,.78),rgba(255,205,43,.92),rgba(255,224,95,.72));
-    box-shadow:0 4px 9px rgba(148,99,0,.18);
-    transform:rotate(7deg);
-  }
-  .sticky-note::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.36) 50%,transparent 58%);
-  }
-  .footer{padding-top:4px;}
-  .footer .hotline-card{
-    border-color:rgba(207,218,234,.9);
-    box-shadow:0 8px 24px rgba(30,58,138,.07);
-    background:rgba(255,255,255,.78);
-    backdrop-filter:blur(12px);
-  }
-
-  .tab-btn:focus-visible,.qa-question:focus-visible,.hotline-num:focus-visible{
-    outline:3px solid rgba(251,191,36,.75);
-    outline-offset:3px;
-  }
-
-  @media(min-width:768px){
-    .header{
-      min-height:224px;
-      padding:30px 32px 58px;
-    }
-    .header-inner{max-width:1120px;}
-    .header h1{
-      max-width:none;
-      white-space:nowrap;
-      margin-bottom:10px;
-      font-size:clamp(23px,2.75vw,37px);
-    }
-    .header .subtitle{line-height:1.55;}
-    .tab-container{margin-top:-29px;}
-    .tabs{padding:5px;}
-    .tab-btn{min-height:44px;padding-top:8px;padding-bottom:8px;}
-    .content-wrapper{padding-top:20px;padding-bottom:24px;}
-    .qa-list{gap:12px;}
-    .blue-strip{height:7px;}
-    .qa-question{min-height:62px;padding-top:14px;padding-bottom:14px;}
-    .qa-answer-inner{padding-top:17px;padding-bottom:17px;line-height:1.75;}
-    .answer-header{margin-bottom:8px;}
-    .qa-answer-inner .disclaimer{margin-top:11px;padding-top:9px;}
-    .footer{padding:4px 24px max(20px,env(safe-area-inset-bottom));}
-    .footer .hotline-card{
-      gap:3px;
-      padding:10px 30px;
-      margin-bottom:7px;
-    }
-    .footer .hotline-num{font-size:18px;}
-  }
-
-  @media(min-width:1024px){
-    .qa-question{padding-left:26px;padding-right:26px;}
-    .qa-answer-inner{padding-left:72px;padding-right:26px;}
-  }
-
-  @media(max-width:600px){
-    body{background-size:auto,24px 24px,24px 24px,auto;}
-    .header{min-height:272px;padding:38px 20px 70px;}
-    .header h1{font-size:22px;letter-spacing:-.015em;}
-    .header .subtitle{font-size:11.5px;}
-    .tab-container{margin-top:-30px;padding:0 12px;}
-    .tabs{gap:5px;padding:5px;border-radius:16px;}
-    .tab-btn{min-height:45px;padding:9px 6px;}
-    .content-wrapper{padding:18px 12px 44px;}
-    .qa-list{gap:12px;}
-    .qa-card{border-radius:12px;}
-    .blue-strip{height:7px;}
-    .qa-question{min-height:68px;padding:15px 14px;gap:10px;}
-    .q-badge{width:27px;height:27px;font-size:12px;}
-    .q-text{font-size:14px;}
-    .qa-answer-inner{padding:18px 14px 18px 51px;font-size:13.5px;}
-    .sticky-note{width:48px;height:15px;top:12px;right:12px;}
-    .answer-header{margin-bottom:10px;}
-  }
-
-  /* Reveal animation */
-  .reveal{
-    opacity:0;
-    transform:translateY(16px);
-    transition:opacity .5s var(--ease),transform .5s var(--ease);
-  }
-  .reveal.visible{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-  @media(prefers-reduced-motion:reduce){
-    *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
-    .reveal{opacity:1;transform:none;}
-  }
-</style>
+    @media print{.hero{padding:25px 0}.nav{display:none}main{padding-top:25px}.section{margin-bottom:30px}.milestone-card,.panel,.summary-card{box-shadow:none}.hero:before,.hero:after{display:none}}
+  </style>
 </head>
 <body>
-
-<header class="header">
-  <div class="header-inner">
-    <h1>2026年南昌住房公积金缴存基数调整常见问题解答</h1>
-    <p class="subtitle">温馨提示：本网页提供的解答仅供参考，如有疑问请致电HR共享中心服务热线 <strong>0791-85267000</strong> 确认。</p>
-  </div>
-</header>
-
-<nav class="tab-container">
-  <div class="tabs" role="tablist">
-    <button class="tab-btn active" data-tab="1" onclick="switchTab(1)">
-      <span class="tab-icon">📋</span>
-      <span class="tab-label">基数核定规则</span>
-    </button>
-    <button class="tab-btn" data-tab="2" onclick="switchTab(2)">
-      <span class="tab-icon">💳</span>
-      <span class="tab-label">缴存金额与执行期限</span>
-    </button>
-    <button class="tab-btn" data-tab="3" onclick="switchTab(3)">
-      <span class="tab-icon">🏠</span>
-      <span class="tab-label">贷款、提取、补缴</span>
-    </button>
-    <button class="tab-btn" data-tab="4" onclick="switchTab(4)">
-      <span class="tab-icon">🔍</span>
-      <span class="tab-label">基数查询相关</span>
-    </button>
-  </div>
-</nav>
-
-<main class="content-wrapper">
-
-  <section class="tab-panel active" id="panel-1">
-    <div class="qa-list">
-
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">住房公积金缴存基数如何核算？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          缴存基数按照个人 <span class="highlight">2025 年度月平均工资</span> 核定，核算公式：<span class="formula">2025 年度全部工资性收入 ÷ 2025 年度实际在岗工作月份</span>
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
-
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">工资性收入包含哪些？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          基本工资、加班工资、月度奖金、业绩奖励等均计入工资性收入。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
-
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">同岗位员工公积金缴存基数为什么不同？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          缴存基数按照个人 <span class="highlight">2025 年度月平均工资</span> 核定，上年度收入水平存在个体差异，缴存基数相应不同。工资收入属于 <span class="highlight">公司核心商密</span>，请勿相互讨论、对比。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
-
+  <header class="hero" id="overview">
+    <div class="shell hero-grid">
+      <div>
+        <div class="eyebrow"><i></i>LINGBOT 2.0 · PROJECT BRIEF</div>
+        <h1>项目排期与里程碑</h1>
+        <p>围绕“主智能体 + 高价值 AI 技能 + 企业智能体广场”推进，采用产品方案、能力开发、前端集成、联调测试、上线准备的阶段化路径。</p>
+      </div>
+      <div class="hero-aside">
+        <div class="label">计划周期</div>
+        <div class="date">08.03 — 11.12</div>
+        <div class="sub">2026 年 · 共 69 个工作日 · 11.11 初步上线 · 11.12 监控</div>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <section class="tab-panel" id="panel-2">
-    <div class="qa-list">
+  <nav class="nav shell" aria-label="页面导航"><div class="nav-inner">
+    <a class="active" href="#overview">项目概览</a><a href="#gantt">甘特图</a><a href="#timeline">里程碑时间轴</a><a href="#scope">建设范围</a><a href="#people">人员与职责</a><a href="#flow">推进链路</a>
+  </div></nav>
 
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">本次基数调整后，个人月度公积金扣缴金额较上期发生增减，原因是什么？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          缴存金额变动与缴存基数的调整相关。若个人 <span class="highlight">2025 年度月平均工资高于 2024 年度</span>，扣缴金额相应增加；若 <span class="highlight">2025 年度月平均工资低于 2024 年度</span>，扣缴金额相应减少。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
+  <main class="shell">
+    <section class="section" id="overview-details">
+      <div class="section-head"><div><div class="kicker">Project overview</div><h2>项目阶段与关键节点</h2></div><p>项目范围、阶段排期、交付物和人员分工。</p></div>
+      <div class="summary-grid">
+        <div class="summary-card accent"><div class="num">69</div><div class="name">总工期（工作日）</div><div class="note">2026.08.03—2026.11.12</div></div>
+        <div class="summary-card"><div class="num">4</div><div class="name">高价值 AI 能力</div><div class="note">PPT、研究、会议转录、联网搜索</div></div>
+        <div class="summary-card"><div class="num">6</div><div class="name">阶段里程碑</div><div class="note">方案确认、开发、联调、测试、上线</div></div>
+        <div class="summary-card"><div class="num">11.11</div><div class="name">初步上线</div><div class="note">11.12 监控并完成阶段收尾</div></div>
+      </div>
+    </section>
 
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">本次基数调整后单位与个人缴存比例标准是多少？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          单位及个人住房公积金缴存比例维持 <span class="highlight">12%</span> 不变。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
+    <section class="section" id="gantt">
+      <div class="section-head"><div><div class="kicker">Gantt view</div><h2>项目甘特图</h2></div><p>按周展示各阶段的工期与并行关系。阶段 1、阶段 2 同期开展；上线周单独标出初步上线与监控节点。</p></div>
+      <div class="gantt-panel"><div class="gantt">
+        <div class="gantt-head"><span></span><span class="month">8 月</span><span class="month sep">9 月</span><span class="month oct">10 月</span><span class="month nov">11 月</span></div>
+        <div class="gantt-head"><span></span><span>03</span><span>10</span><span>17</span><span>24</span><span>31</span><span>07</span><span>14</span><span>21</span><span>28</span><span>05</span><span>12</span><span>19</span><span>26</span><span>02</span><span>09</span></div>
+        <div class="gantt-row"><div class="gantt-label">阶段 0<small>方案确认</small></div><div class="gantt-bar" style="grid-column:2 / span 2">08.03–08.14</div></div>
+        <div class="gantt-row"><div class="gantt-label">阶段 1<small>AI/后端基础开发</small></div><div class="gantt-bar" style="grid-column:4 / span 6">08.17–09.25</div></div>
+        <div class="gantt-row"><div class="gantt-label">阶段 2<small>前端开发与页面集成</small></div><div class="gantt-bar green" style="grid-column:4 / span 6">08.17–09.25</div></div>
+        <div class="gantt-row"><div class="gantt-label">阶段 3<small>系统联调</small></div><div class="gantt-bar" style="grid-column:10 / span 4">09.28–10.23</div></div>
+        <div class="gantt-row"><div class="gantt-label">阶段 4<small>测试与问题修复</small></div><div class="gantt-bar green" style="grid-column:14 / span 2">10.26–11.05</div></div>
+        <div class="gantt-row"><div class="gantt-label">阶段 5<small>UAT、上线与监控</small></div><div class="gantt-bar gold" style="grid-column:15 / span 2">11.08–11.12</div></div>
+        <div class="gantt-row"><div class="gantt-label">上线节点<small>关键运营动作</small></div><div class="gantt-milestone" style="grid-column:15 / span 2">11.11 初步上线 · 11.12 监控</div></div>
+      </div><div class="gantt-legend"><span><i></i>能力与系统开发</span><span><i class="green"></i>页面集成与测试</span><span><i class="gold"></i>UAT / 上线准备</span></div></div>
+    </section>
 
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">本次公积金调整的缴存限额是多少？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          根据南昌住房公积金管理中心 <span class="highlight">【2026】27 号文</span> 关于调整 2026 年度住房公积金缴存基数的通知，2026 年度住房公积金月缴存额 <span class="highlight">上限为 7240 元</span>（含单位、个人部分），<span class="highlight">下限为 260 元</span>（含单位、个人部分）。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
+    <section class="section" id="timeline">
+      <div class="section-head"><div><div class="kicker">Milestones</div><h2>里程碑时间轴</h2></div><p>每个节点都有明确目标、交付物和负责人，阶段之间按依赖关系衔接。</p></div>
+      <div class="timeline">
+        <article class="milestone current"><div class="dot">0</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 00</div><h3>产品与技术方案确认</h3></div><div class="period">08.03 — 08.14</div></div><p>锁定本期范围、主流程、原型、UI/UE 方案、技术方案与接口边界，形成可启动的共同基线。</p><div class="deliverables"><span>主 PRD 范围</span><span>Web / 移动端原型</span><span>UI/UE 设计稿</span><span>技术方案与接口清单</span></div><div class="owner-line"><b>核心负责人</b>李飞 · 熊家园 · 唐伟丹 · 杨云聪 · 农德华 · 汪利钢</div></div></article>
+        <article class="milestone"><div class="dot">1</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 01</div><h3>AI 能力与后端基础开发</h3></div><div class="period">08.17 — 09.25</div></div><p>并行完成主智能体、联网搜索、三项技能、HiAgent 接入及后端基础接口，为端到端联调提供能力底座。</p><div class="deliverables"><span>智能体框架与技能路由</span><span>AI PPT</span><span>Deep Research</span><span>会议转录</span><span>后台权限接口</span></div><div class="owner-line"><b>核心负责人</b>唐伟丹 · 罗志鹏 · 辜文祥 · 杨云聪 · 农德华</div></div></article>
+        <article class="milestone"><div class="dot">2</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 02</div><h3>前端开发与页面集成</h3></div><div class="period">08.17 — 09.25</div></div><p>与后端能力并行，完成 Web/移动端页面、输入区、长任务状态、下载入口、智能体广场与后台管理页面集成。</p><div class="deliverables"><span>普通 Chat 页面</span><span>技能前端接入</span><span>智能体广场</span><span>后台管理前端</span><span>UI/UE 走查</span></div><div class="owner-line"><b>核心负责人</b>汪利钢 · 熊家园</div></div></article>
+        <article class="milestone"><div class="dot">3</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 03</div><h3>系统联调</h3></div><div class="period">09.28 — 10.23</div></div><p>围绕核心用户路径完成端到端跑通，统一验证触发、任务状态、结果展示、下载与权限链路。</p><div class="deliverables"><span>普通 Chat 联调</span><span>联网搜索</span><span>三项技能端到端</span><span>智能体广场</span><span>后台管理</span></div><div class="owner-line"><b>核心负责人</b>汪利钢 · 杨云聪 · 农德华 · 各技能 Owner</div></div></article>
+        <article class="milestone"><div class="dot">4</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 04</div><h3>测试与问题修复</h3></div><div class="period">10.26 — 11.05</div></div><p>完成冒烟、功能、AI 效果、后台和企业微信真机测试，集中处理缺陷并完成回归验证。</p><div class="deliverables"><span>冒烟测试</span><span>AI 功能测试</span><span>Web / 移动端测试</span><span>真机测试</span><span>缺陷闭环</span></div><div class="owner-line"><b>核心负责人</b>罗芬 · 各开发负责人</div></div></article>
+        <article class="milestone"><div class="dot">5</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 05</div><h3>UAT、上线与监控</h3></div><div class="period">11.08 — 11.12</div></div><p>11 月 11 日初步上线，11 月 12 日监控运行情况并完成阶段收尾与结果确认。</p><div class="deliverables"><span>UAT 验收</span><span>11.11 初步上线</span><span>11.12 运行监控</span><span>阶段收尾</span><span>回滚方案</span></div><div class="owner-line"><b>核心负责人</b>李飞 · 系统开发团队 · 罗芬</div></div></article>
+      </div>
+    </section>
 
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">本次调整后的公积金缴存基数执行周期多长？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          调整后的缴存基数执行的缴存年度时间为 <span class="formula">2026 年 7 月 1 日至 2027 年 6 月 30 日</span>。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
+    <section class="section" id="scope">
+      <div class="section-head"><div><div class="kicker">Scope</div><h2>本期建设范围</h2></div><p>围绕主入口、核心技能、智能体生态和管理能力形成完整闭环。</p></div>
+      <div class="columns"><div class="panel"><h3>面向用户的核心能力</h3><div class="scope-list">
+        <div class="scope-item"><div class="scope-icon">01</div><div><b>普通 Chat 主智能体</b><span>Pi 智能体框架、云端大模型、联网搜索和附件理解</span></div></div>
+        <div class="scope-item"><div class="scope-icon">02</div><div><b>AI PPT 技能</b><span>需求收集 → 大纲确认 → PPT 生成 → 下载</span></div></div>
+        <div class="scope-item"><div class="scope-icon">03</div><div><b>Deep Research 技能</b><span>研究计划、资料检索分析、研究报告生成与下载</span></div></div>
+        <div class="scope-item"><div class="scope-icon">04</div><div><b>会议转录技能</b><span>录音上传、ASR 转写、会议纪要、逐字稿查看与下载</span></div></div>
+        <div class="scope-item"><div class="scope-icon">05</div><div><b>智能体广场与历史对话</b><span>企业智能体、计财智能体、HiAgent 统一展示与历史搜索</span></div></div>
+      </div></div><div class="panel"><h3>面向运营与管理的能力</h3><div class="scope-list">
+        <div class="scope-item"><div class="scope-icon">A</div><div><b>后台权限管理中心</b><span>主智能体管理、计财智能体对话管理与权限配置</span></div></div>
+        <div class="scope-item"><div class="scope-icon">B</div><div><b>数据与日志增强</b><span>补充技能使用分析字段，为后续使用分析与成本估算提供依据</span></div></div>
+        <div class="scope-item"><div class="scope-icon">C</div><div><b>统一任务状态与交付</b><span>长任务进度、失败重试、文件下载和结果交付口径统一</span></div></div>
+        <div class="scope-item"><div class="scope-icon">D</div><div><b>Web / 移动端一致体验</b><span>Web 与企业微信 H5 核心使用路径统一，支持真机验证</span></div></div>
+      </div></div></div>
+    </section>
 
-    </div>
-  </section>
+    <section class="section" id="people">
+      <div class="section-head"><div><div class="kicker">Organization</div><h2>人员划分与责任边界</h2></div><p>产品负责方向和验收，模块 Owner 对能力落地闭环，系统团队负责集成与发布，测试团队负责质量门禁。</p></div>
+      <div class="panel"><div class="team-grid">
+        <div class="team"><div class="team-title">产品与体验 <em>方向 / 体验</em></div><p>整体规划、PRD、原型、项目排期、UI/UE 与设计走查</p><div class="people"><span>李飞 · 产品负责人</span><span>熊家园 · UI/UE</span></div></div>
+        <div class="team"><div class="team-title">AI 能力与模块 Owner <em>能力 / 交付</em></div><p>主智能体、联网搜索、会议转录、AI PPT、Deep Research、HiAgent</p><div class="people"><span>唐伟丹</span><span>罗志鹏</span><span>辜文祥</span><span>林建余</span></div></div>
+        <div class="team"><div class="team-title">系统开发 <em>集成 / 发布</em></div><p>前端页面、后端接口、后台权限、页面集成、发布准备</p><div class="people"><span>汪利钢 · 前端</span><span>杨云聪 · 后端</span><span>农德华 · 权限</span></div></div>
+        <div class="team"><div class="team-title">测试与基础设施 <em>质量 / 稳定</em></div><p>功能测试、AI 效果测试、真机测试、缺陷闭环、模型与服务器</p><div class="people"><span>罗芬 · 测试</span><span>樊瑶 · 模型与服务器</span></div></div>
+      </div></div>
+    </section>
 
-  <section class="tab-panel" id="panel-3">
-    <div class="qa-list">
-
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">基数调整后，公积金贷款额度是否会同步变动？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          公积金贷款额度由南昌住房公积金管理中心综合评定，核定参考要素包含月缴存额、账户余额、缴存年限、个人征信等，最终贷款审批结果以公积金中心审核意见为准。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电南昌市公积金咨询热线：0791-12329。</span>
-          </div>
-        </div></div>
-      </article>
-
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">基数调整后，租房额度是否会同步变动？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          租房提取业务设置 <span class="highlight">年度最高提取限额</span>，提取限额不随月度缴存金额变化。具体限额标准可查阅南昌公积金管理中心官方政策，业务咨询热线：<strong>0791-12329</strong>。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电南昌市公积金咨询热线：0791-12329。</span>
-          </div>
-        </div></div>
-      </article>
-
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">往年缴存基数偏低，本次基数调整能否办理公积金基数补缴业务？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          目前 <span class="highlight">暂无公积金基数补缴</span> 相关官方政策，补缴相关事宜可致电南昌市公积金咨询热线：<strong>0791-12329</strong>。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电南昌市公积金咨询热线：0791-12329。</span>
-          </div>
-        </div></div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="tab-panel" id="panel-4">
-    <div class="qa-list">
-
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">如何查询公积金调整后的基数，何时生效？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          可于调整当月 <span class="highlight">28 日后</span> 登录公积金官方 APP 查询最新缴存基数；通过微信搜索 <span class="highlight">“南昌公积金”</span> 小程序，进入个人服务板块，使用基本信息查询功能查看缴存信息。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
-
-      <article class="qa-card reveal">
-        <div class="blue-strip"></div>
-        <div class="qa-question" onclick="toggleCard(this)">
-          <span class="q-badge">Q</span>
-          <span class="q-text">下一轮统一缴存基数调整时间？</span>
-          <svg class="q-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-        <div class="qa-answer"><div class="qa-answer-inner">
-          <div class="sticky-note"></div>
-          <div class="answer-header">
-            <span class="answer-label">答：</span>
-            <span class="answer-line"></span>
-          </div>
-          下一轮全市统一公积金缴存基数调整时间，以南昌住房公积金管理中心后续发布的官方通知为准。
-          <div class="disclaimer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
-            <span>如有疑问，可致电 HR 共享中心 0791-85267000 咨询。</span>
-          </div>
-        </div></div>
-      </article>
-
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="hotline-card">
-    <span class="hotline-label">HR 共享中心服务热线</span>
-    <a class="hotline-num" href="tel:0791-85267000">0791-85267000</a>
-  </div>
-  <div class="meta">本页面内容仅供参考 · 密级：专有</div>
-</footer>
-
-<script>
-function preferredScrollBehavior(){
-  return window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
-}
-function switchTab(n){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false');});
-  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
-  var btn=document.querySelector('.tab-btn[data-tab="'+n+'"]');
-  var panel=document.getElementById('panel-'+n);
-  if(btn){btn.classList.add('active');btn.setAttribute('aria-selected','true');}
-  if(panel){
-    panel.classList.add('active');
-    panel.querySelectorAll('.reveal').forEach(function(el){el.classList.remove('visible');});
-    setTimeout(function(){
-      panel.querySelectorAll('.reveal').forEach(function(el,i){
-        setTimeout(function(){el.classList.add('visible');},i*60);
-      });
-    },50);
-    /* 仅当用户已滚过内容起点时，将新分类带回稳定的阅读位置。 */
-    requestAnimationFrame(function(){
-      var tabs=document.querySelector('.tabs');
-      var firstCard=panel.querySelector('.qa-card');
-      if(!tabs||!firstCard)return;
-      var safeTop=tabs.getBoundingClientRect().bottom+16;
-      var cardTop=firstCard.getBoundingClientRect().top;
-      if(cardTop<safeTop-24){
-        window.scrollBy({top:cardTop-safeTop,behavior:preferredScrollBehavior()});
-      }
-    });
-  }
-}
-
-function ensureCardVisible(card){
-  var tabs=document.querySelector('.tabs');
-  var safeTop=tabs?tabs.getBoundingClientRect().bottom+16:16;
-  var safeBottom=window.innerHeight-20;
-  var rect=card.getBoundingClientRect();
-  var availableHeight=safeBottom-safeTop;
-  var delta=0;
-
-  /* 卡片能完整放入视口时只做最小幅度移动；内容过长时优先露出问题和答案开头。 */
-  if(rect.height<=availableHeight){
-    if(rect.bottom>safeBottom)delta=rect.bottom-safeBottom;
-    else if(rect.top<safeTop)delta=rect.top-safeTop;
-  }else if(rect.top<safeTop||rect.bottom>safeBottom){
-    delta=rect.top-safeTop;
-  }
-
-  if(Math.abs(delta)>2){
-    window.scrollBy({top:delta,behavior:preferredScrollBehavior()});
-  }
-}
-
-function toggleCard(el){
-  var card=el.closest('.qa-card');
-  var willOpen=!card.classList.contains('open');
-
-  /* 同一分类保持单项展开，避免页面高度叠加造成阅读位置大幅跳动。 */
-  if(willOpen){
-    card.closest('.tab-panel').querySelectorAll('.qa-card.open').forEach(function(openCard){
-      if(openCard===card)return;
-      openCard.classList.remove('open');
-      openCard.querySelector('.qa-question').setAttribute('aria-expanded','false');
-    });
-  }
-
-  card.classList.toggle('open',willOpen);
-  var isOpen=willOpen;
-  el.setAttribute('aria-expanded',String(isOpen));
-
-  if(isOpen){
-    /* 等待展开动画结束后再测量，确保最后一张卡片也能完整进入视野。 */
-    setTimeout(function(){ensureCardVisible(card);},430);
-  }else{
-    /* 收起后也保留当前问题作为视觉锚点，避免落到大片空白区域。 */
-    setTimeout(function(){ensureCardVisible(card);},430);
-  }
-}
-document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('.tab-btn').forEach(function(btn,i){
-    var n=btn.getAttribute('data-tab');
-    btn.id='tab-'+n;
-    btn.setAttribute('role','tab');
-    btn.setAttribute('aria-controls','panel-'+n);
-    btn.setAttribute('aria-selected',String(btn.classList.contains('active')));
-    btn.addEventListener('keydown',function(e){
-      if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
-      e.preventDefault();
-      var tabs=Array.from(document.querySelectorAll('.tab-btn'));
-      var next=(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
-      tabs[next].focus();tabs[next].click();
-    });
-  });
-  document.querySelectorAll('.tab-panel').forEach(function(panel){
-    var n=panel.id.replace('panel-','');
-    panel.setAttribute('role','tabpanel');
-    panel.setAttribute('aria-labelledby','tab-'+n);
-  });
-  document.querySelectorAll('.qa-question').forEach(function(question,i){
-    question.setAttribute('role','button');
-    question.setAttribute('tabindex','0');
-    question.setAttribute('aria-expanded','false');
-    question.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleCard(question);}
-    });
-  });
-  var first=document.querySelector('#panel-1 .qa-card');
-  if(first){
-    first.classList.add('open');
-    first.querySelector('.qa-question').setAttribute('aria-expanded','true');
-  }
-  var observer=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){entry.target.classList.add('visible');}
-    });
-  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el);});
-  setTimeout(function(){
-    document.querySelectorAll('#panel-1 .reveal').forEach(function(el,i){
-      setTimeout(function(){el.classList.add('visible');},i*80);
-    });
-  },100);
-});
-</script>
-
+    <section class="section" id="flow">
+      <div class="section-head"><div><div class="kicker">Delivery logic</div><h2>推进链路</h2></div><p>用四个判断点控制项目从“方案可行”走向“上线可用”。</p></div>
+      <div class="flow"><div class="flow-step"><div class="index">01 · 锁定基线</div><b>范围与方案一致</b><p>PRD、原型、接口边界和技术约束达成共识。</p></div><div class="flow-step"><div class="index">02 · 并行建设</div><b>能力与页面同步</b><p>AI/后端与前端/页面集成并行推进，减少等待。</p></div><div class="flow-step"><div class="index">03 · 端到端验证</div><b>核心链路跑通</b><p>从触发到结果、下载、权限完成完整联调。</p></div><div class="flow-step"><div class="index">04 · 质量门禁</div><b>验收与发布就绪</b><p>测试、UAT、上线与回滚方案全部确认。</p></div></div>
+    </section>
+  </main>
+  <footer><div class="shell">Lingbot 2.0 项目排期汇报 · 讨论稿 · 2026.07.08</div></footer>
+  <script>
+    const links=[...document.querySelectorAll('.nav a')];
+    const sections=links.map(a=>document.querySelector(a.getAttribute('href')));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));}}),{rootMargin:'-30% 0px -60% 0px',threshold:0});
+    sections.forEach(section=>section&&observer.observe(section));
+  </script>
 </body>
 </html>
