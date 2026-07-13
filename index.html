@@ -271,8 +271,11 @@
     transition:all .3s var(--ease);
   }
   .qa-card.open .q-badge{
-    background:var(--blue);
-    color:#FFFFFF;
+    background:#FFFFFF;
+    color:var(--blue-2);
+    border-color:#dbe8ff;
+    box-shadow:none;
+    transition:none;
   }
   .q-text{
     flex:1;
@@ -447,11 +450,15 @@
   .footer .hotline-num{
     font-size:clamp(17px,4vw,21px);
     font-weight:700;
-    color:var(--blue-2);
+    color:var(--yellow-2) !important;
+    -webkit-text-fill-color:var(--yellow-2);
     letter-spacing:.02em;
-    text-decoration:none;
+    text-decoration:none !important;
     font-variant-numeric:tabular-nums;
   }
+  .footer .hotline-num:visited,
+  .footer .hotline-num:hover,
+  .footer .hotline-num:active{color:var(--yellow-2) !important;}
   .footer .meta{
     font-size:clamp(10px,2.2vw,11px);
     color:var(--ink-4);
@@ -621,7 +628,7 @@
     border-radius:9px;
     background:#f2f6ff;
   }
-  .qa-card.open .q-badge{border-color:transparent;box-shadow:0 5px 12px rgba(37,99,235,.2);}
+  .qa-card.open .q-badge{background:#FFFFFF;color:var(--blue-2);border-color:#dbe8ff;box-shadow:none;transition:none;}
   .q-text{font-size:15.5px;letter-spacing:.005em;}
   .q-arrow{width:17px;height:17px;margin:0;}
   .qa-answer{
