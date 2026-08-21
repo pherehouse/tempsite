@@ -1,211 +1,303 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#102a43" />
-  <title>Lingbot 2.0｜项目排期汇报</title>
-  <style>
-    :root{
-      --navy:#102a43;
-      --navy-2:#183b56;
-      --blue:#2f6fed;
-      --blue-soft:#eaf2ff;
-      --ink:#172b4d;
-      --muted:#6b7c93;
-      --line:#dfe7f1;
-      --paper:#f5f8fc;
-      --white:#fff;
-      --gold:#c9942e;
-      --gold-soft:#fff7e5;
-      --green:#27866b;
-      --shadow:0 14px 40px rgba(16,42,67,.09);
-      --radius:18px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
-    a{color:inherit;text-decoration:none}
-    .shell{max-width:1240px;margin:auto;padding:0 28px}
-    .hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:58px 0 84px}
-    .hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%;pointer-events:none}
-    .hero:before{width:430px;height:430px;right:-150px;top:-220px}
-    .hero:after{width:250px;height:250px;left:-120px;bottom:-170px}
-    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.45fr .8fr;gap:56px;align-items:end}
-    .eyebrow{display:flex;align-items:center;gap:10px;color:#b9d3ee;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
-    .eyebrow i{width:28px;height:2px;background:var(--gold);display:inline-block}
-    h1{margin:18px 0 12px;font-size:clamp(34px,5vw,58px);line-height:1.15;letter-spacing:-.04em;font-weight:750}
-    .hero p{max-width:690px;color:#c9d8e8;margin:0;font-size:17px}
-    .hero-aside{border-left:1px solid rgba(255,255,255,.2);padding-left:28px}
-    .hero-aside .label{color:#9db5cc;font-size:12px;letter-spacing:.08em}
-    .hero-aside .date{font-size:31px;font-weight:700;letter-spacing:-.03em;margin:6px 0 2px}
-    .hero-aside .sub{color:#c9d8e8;font-size:13px}
-    .nav{margin-top:-28px;position:relative;z-index:3}
-    .nav-inner{display:flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:var(--shadow);overflow:auto}
-    .nav a{white-space:nowrap;border-radius:9px;padding:9px 15px;color:var(--muted);font-weight:650;font-size:13px}
-    .nav a:hover,.nav a.active{background:var(--blue-soft);color:var(--blue)}
-    main{padding:54px 0 80px}
-    .section{scroll-margin-top:30px;margin-bottom:72px}
-    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:22px}
-    .kicker{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-    h2{font-size:28px;line-height:1.25;margin:7px 0 0;letter-spacing:-.025em}
-    .section-head p{max-width:520px;color:var(--muted);margin:0;font-size:14px}
-    .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .summary-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px;box-shadow:0 5px 18px rgba(16,42,67,.04)}
-    .summary-card .num{font-size:30px;font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.04em}
-    .summary-card .name{margin-top:8px;font-weight:700}
-    .summary-card .note{color:var(--muted);font-size:12px;margin-top:2px}
-    .summary-card.accent{background:var(--navy);color:#fff;border-color:var(--navy)}
-    .summary-card.accent .num{color:#fff}.summary-card.accent .note{color:#b9d3ee}
-    .gantt-panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 6px 20px rgba(16,42,67,.045);overflow:auto}
-    .gantt{min-width:900px}
-    .gantt-head,.gantt-row{display:grid;grid-template-columns:170px repeat(15,minmax(36px,1fr));gap:2px;align-items:center}
-    .gantt-head{margin-bottom:8px;color:#8494a8;font-size:10px;font-weight:750;text-align:center}
-    .gantt-head .month{grid-column:span 2;text-align:left;color:#556b82;font-size:11px;letter-spacing:.08em}.gantt-head .month.sep{grid-column:span 6}.gantt-head .month.oct{grid-column:span 4}.gantt-head .month.nov{grid-column:span 3}
-    .gantt-row{min-height:44px;margin:6px 0}.gantt-label{font-size:13px;font-weight:700;padding-right:12px}.gantt-label small{display:block;color:var(--muted);font-weight:500;font-size:10px;margin-top:1px}
-    .gantt-cell{height:34px;background:#f4f7fb;border-radius:4px}.gantt-bar{height:34px;border-radius:5px;background:linear-gradient(90deg,#2f6fed,#5e8df4);display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;box-shadow:0 4px 10px rgba(47,111,237,.18)}
-    .gantt-bar.green{background:linear-gradient(90deg,#27866b,#45a88b);box-shadow:0 4px 10px rgba(39,134,107,.14)}.gantt-bar.gold{background:linear-gradient(90deg,#bd841f,#daa73c);box-shadow:0 4px 10px rgba(189,132,31,.14);min-width:150px}.gantt-milestone{min-width:150px}
-    .gantt-milestone{height:34px;position:relative;display:flex;align-items:center;justify-content:center;background:#fff3d4;border:1px solid #ebcc85;border-radius:5px;color:#916015;font-size:10px;font-weight:800}.gantt-milestone:before{content:"";position:absolute;left:50%;top:-8px;height:50px;border-left:2px dashed #c9942e;opacity:.7}
-    .gantt-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;color:#677b91;font-size:12px}.gantt-legend span{display:flex;align-items:center;gap:6px}.gantt-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;background:#2f6fed}.gantt-legend i.green{background:#27866b}.gantt-legend i.gold{background:#c9942e}
-    .timeline{position:relative;padding:10px 0 0}
-    .timeline:before{content:"";position:absolute;left:28px;top:26px;bottom:28px;width:2px;background:linear-gradient(var(--blue),#b8c9e5 85%,transparent)}
-    .milestone{display:grid;grid-template-columns:58px 1fr;gap:18px;position:relative;margin-bottom:16px}
-    .dot{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#fff;border:6px solid var(--blue-soft);color:var(--blue);font-weight:800;font-size:15px;box-shadow:0 0 0 1px #c9dcff;z-index:1}
-    .milestone.current .dot{background:var(--blue);border-color:#dce8ff;color:#fff;box-shadow:0 0 0 1px var(--blue)}
-    .milestone-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 23px;box-shadow:0 6px 20px rgba(16,42,67,.045)}
-    .milestone-top{display:flex;justify-content:space-between;gap:18px;align-items:start}
-    .phase{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.12em}
-    .milestone h3{margin:3px 0 4px;font-size:20px;letter-spacing:-.02em}
-    .period{white-space:nowrap;background:var(--gold-soft);color:#9b6a18;border:1px solid #f0dfb5;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:750}
-    .milestone-card p{margin:9px 0 14px;color:var(--muted);font-size:14px}
-    .deliverables{display:flex;flex-wrap:wrap;gap:7px}
-    .deliverables span{background:#f4f7fb;color:#49627e;border:1px solid #e3ebf4;border-radius:6px;padding:4px 9px;font-size:12px}
-    .owner-line{margin-top:13px;padding-top:11px;border-top:1px solid #edf1f6;color:#6b7c93;font-size:12px}.owner-line b{color:var(--ink);margin-right:6px}
-    .columns{display:grid;grid-template-columns:1.08fr .92fr;gap:20px}
-    .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:0 6px 20px rgba(16,42,67,.045)}
-    .panel h3{margin:0 0 17px;font-size:18px}
-    .scope-list{display:grid;gap:10px}
-    .scope-item{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:10px 0;border-bottom:1px solid #edf1f6}.scope-item:last-child{border-bottom:0}
-    .scope-icon{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:13px}
-    .scope-item b{display:block;font-size:14px}.scope-item span{color:var(--muted);font-size:12px}
-    .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .team{padding:14px;background:#f8fafc;border:1px solid #e8eef5;border-radius:12px}
-    .team-title{font-weight:750;font-size:14px;display:flex;justify-content:space-between;gap:8px}.team-title em{font-style:normal;color:var(--blue);font-size:11px}
-    .team p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
-    .people{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.people span{background:#fff;border:1px solid #dae5f1;border-radius:5px;padding:3px 7px;font-size:11px;color:#49627e}
-    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .flow-step{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 17px}.flow-step:after{content:"→";position:absolute;right:-18px;top:38px;color:#9db3c9;font-size:20px}.flow-step:nth-child(3n):after{display:none}
-    .flow-step .index{color:var(--gold);font-weight:800;font-size:12px}.flow-step b{display:block;margin-top:3px;font-size:15px}.flow-step p{margin:5px 0 0;color:var(--muted);font-size:12px}
-    footer{border-top:1px solid var(--line);padding:23px 0 40px;color:#8998aa;font-size:12px;text-align:center}
-    @media(max-width:860px){.hero-grid,.columns{grid-template-columns:1fr;gap:28px}.hero-aside{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:18px 0 0}.summary-grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:10px}.flow{grid-template-columns:1fr 1fr}.flow-step:nth-child(2n):after{display:none}.gantt-panel{padding:16px}.gantt{min-width:0}.gantt-head{display:none}.gantt-row{display:grid;grid-template-columns:1fr;gap:6px;min-height:0;margin:14px 0}.gantt-bar,.gantt-milestone{grid-column:1!important;width:100%;min-width:0;height:auto;min-height:34px;padding:8px 10px;white-space:normal;justify-content:flex-start}.gantt-milestone:before{display:none}}
-    @media(max-width:580px){.shell{padding:0 16px}.hero{padding:42px 0 68px}h1{font-size:35px}.hero p{font-size:15px}.summary-grid{grid-template-columns:1fr 1fr;gap:9px}.summary-card{padding:16px}.summary-card .num{font-size:24px}.timeline:before{left:22px}.milestone{grid-template-columns:46px 1fr;gap:12px}.dot{width:46px;height:46px;border-width:5px;font-size:13px}.milestone-top{display:block}.period{display:inline-block;margin-top:8px}.milestone-card{padding:17px}.milestone h3{font-size:18px}.team-grid,.flow{grid-template-columns:1fr}.flow-step:after{display:none}.panel{padding:18px}}
-    @media(min-width:1280px){
-      .nav{position:fixed;left:22px;top:50%;transform:translateY(-50%);width:148px;margin:0;padding:0;z-index:20}
-      .hero .shell,main.shell,footer .shell{max-width:none;margin-left:190px;margin-right:40px}
-      .nav-inner{display:flex;flex-direction:column;align-items:stretch;gap:4px;padding:8px;border-radius:14px;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);box-shadow:0 14px 34px rgba(16,42,67,.12)}
-      .nav a{padding:10px 12px;text-align:left;font-size:12px}
-      .nav a:before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:#c8d5e4;vertical-align:middle;margin:0 8px 2px 1px}
-      .nav a.active:before{background:var(--blue);box-shadow:0 0 0 3px #dce8ff}
-      .nav a.active{background:var(--blue-soft)}
-    }
-    @media print{.hero{padding:25px 0}.nav{display:none}main{padding-top:25px}.section{margin-bottom:30px}.milestone-card,.panel,.summary-card{box-shadow:none}.hero:before,.hero:after{display:none}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lingbot 每周任务看板 · 第34周</title>
+<style>
+  :root{
+    --navy:#03386B; --blue:#036AA2; --cyan:#0A79C3; --teal:#0FA3B1;
+    --ink:#16324F; --muted:#6B7F95; --line:#E3ECF5; --bg:#F2F6FB; --card:#FFFFFF;
+    --red:#D64545; --red-bg:#FDECEC;
+    --amber:#E6892B; --amber-bg:#FFF3E2;
+    --green:#2FA47A; --green-bg:#E7F6F0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"PingFang SC","Noto Sans CJK SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;padding:28px 16px;
+  }
+  .board{max-width:1100px;margin:0 auto;}
+
+  /* Header */
+  .header{
+    position:relative;overflow:hidden;
+    background:linear-gradient(120deg,#022B54 0%,#036AA2 55%,#0FA3B1 120%);
+    border-radius:16px;color:#fff;padding:26px 30px;
+    box-shadow:0 10px 30px rgba(3,106,162,.25);
+  }
+  .header::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(255,255,255,.16) 0 46px, transparent 47px),
+      radial-gradient(circle at 92% 82%, rgba(15,163,177,.35) 0 90px, transparent 91px),
+      radial-gradient(circle at 70% 60%, rgba(255,255,255,.07) 0 30px, transparent 31px);
+    pointer-events:none;
+  }
+  .header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;position:relative;z-index:1;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand-mark{width:46px;height:46px;border-radius:12px;flex:0 0 auto;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:20px;letter-spacing:.5px;}
+  .brand h1{font-size:24px;font-weight:700;letter-spacing:1px;}
+  .brand p{font-size:13px;opacity:.85;margin-top:3px;letter-spacing:2px;}
+  .week-chip{text-align:right;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+    border-radius:12px;padding:9px 16px;line-height:1.4;}
+  .week-chip .wk{font-size:19px;font-weight:800;letter-spacing:.5px;}
+  .week-chip .wk small{font-size:12px;font-weight:600;opacity:.85;margin-left:4px;}
+  .week-chip .w{font-size:12px;opacity:.88;}
+  .header-note{position:relative;z-index:1;margin-top:16px;font-size:12.5px;opacity:.82;}
+
+  /* Notice */
+  .notice{margin-top:16px;background:linear-gradient(90deg,#FFF3E2,#FFFBF3);border:1px solid #F3DDB8;
+    border-left:5px solid var(--amber);border-radius:14px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;
+    box-shadow:0 4px 14px rgba(230,137,43,.08);}
+  .notice .tag{flex:0 0 auto;background:var(--amber);color:#fff;font-weight:700;font-size:12px;
+    padding:5px 10px;border-radius:999px;letter-spacing:1px;margin-top:2px;}
+  .notice .txt{font-size:14.5px;line-height:1.75;}
+  .notice .txt b{color:#B85E0E;}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px;}
+  .stat{background:var(--card);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;
+    box-shadow:0 4px 16px rgba(22,50,79,.05);border:1px solid var(--line);}
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,var(--cyan));}
+  .stat .num{font-size:34px;font-weight:800;color:var(--c,var(--cyan));line-height:1;}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.5px;}
+  .stat .sub{font-size:11.5px;color:#9AA9BA;margin-top:3px;}
+
+  /* Sections */
+  .section{margin-top:22px;}
+  .sec-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+  .sec-head .dot{width:11px;height:11px;border-radius:3px;background:var(--c,var(--cyan));}
+  .sec-head h2{font-size:16px;font-weight:700;letter-spacing:.5px;}
+  .sec-head .count{background:var(--cbg,#E9F3FB);color:var(--c,var(--cyan));font-size:12px;font-weight:700;
+    padding:2px 10px;border-radius:999px;}
+  .sec-head .range{margin-left:auto;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;}
+
+  .empty{background:var(--card);border:1px dashed #CBD8E6;border-radius:12px;padding:16px 18px;color:var(--muted);font-size:14px;}
+
+  /* Today highlight cards */
+  .today-card{background:linear-gradient(90deg,#FFF3E2,#FFF8EC);border:1px solid #F3DDB8;
+    border-left:5px solid var(--amber);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:16px;
+    box-shadow:0 4px 14px rgba(230,137,43,.08);}
+  .today-card + .today-card{margin-top:10px;}
+  .today-card .badge{flex:0 0 auto;background:var(--amber);color:#fff;font-size:11px;font-weight:700;
+    padding:5px 12px;border-radius:8px;letter-spacing:1px;white-space:nowrap;}
+  .today-card .name{font-weight:700;font-size:15.5px;}
+  .today-card .meta{font-size:13px;color:var(--muted);margin-top:3px;}
+  .today-card .right{margin-left:auto;text-align:right;font-size:13px;color:#B85E0E;font-weight:700;white-space:nowrap;}
+
+  /* Table */
+  .table-wrap{background:var(--card);border-radius:14px;border:1px solid var(--line);
+    box-shadow:0 4px 16px rgba(22,50,79,.05);overflow:hidden;}
+  table{width:100%;border-collapse:collapse;}
+  thead th{text-align:left;font-size:12px;color:var(--muted);letter-spacing:1px;font-weight:600;
+    padding:13px 16px;background:#F6FAFE;border-bottom:1px solid var(--line);white-space:nowrap;}
+  tbody td{padding:13px 16px;border-bottom:1px solid #EDF3F9;font-size:13.5px;vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:#F8FBFE;}
+  .serial{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12.5px;white-space:nowrap;}
+  .subject{font-weight:600;}
+  .hint{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;max-width:340px;}
+  .pill{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+  .pl-todo{background:#EAF2FB;color:var(--blue);}
+  .pl-prog{background:var(--green-bg);color:var(--green);}
+  .pl-done{background:#EDF4F0;color:#4B8A72;}
+  .pl-over{background:var(--red-bg);color:var(--red);}
+  .pl-today{background:var(--amber-bg);color:#B85E0E;}
+  .due{font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .due b{color:var(--ink);}
+  .due .rest{font-size:11.5px;color:var(--muted);}
+  .tag-lv{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:4px;
+    background:#EEF4FB;color:#5A7EA8;margin-left:6px;letter-spacing:.5px;}
+
+  .footer{margin-top:22px;text-align:center;font-size:12.5px;color:var(--muted);}
+  .footer b{color:var(--blue);}
+  .footer .rule{display:inline-block;border-top:2px solid var(--teal);padding-top:8px;margin-top:6px;letter-spacing:.5px;}
+</style>
 </head>
 <body>
-  <header class="hero" id="overview">
-    <div class="shell hero-grid">
-      <div>
-        <div class="eyebrow"><i></i>LINGBOT 2.0 · PROJECT BRIEF</div>
-        <h1>项目排期与里程碑</h1>
-        <p>围绕“主智能体 + 高价值 AI 技能 + 企业智能体广场”推进，采用产品方案、能力开发、前端集成、联调测试、上线准备的阶段化路径。</p>
+<div class="board">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-mark">LB</div>
+        <div>
+          <h1>LINGBOT 每周任务看板</h1>
+          <p>PROJECT WEEKLY STATUS</p>
+        </div>
       </div>
-      <div class="hero-aside">
-        <div class="label">计划周期</div>
-        <div class="date">08.03 — 11.12</div>
-        <div class="sub">2026 年 · 共 69 个工作日 · 11.11 初步上线 · 11.12 监控</div>
+      <div class="week-chip">
+        <div class="wk">第 34 周<small>/ 2026</small></div>
+        <div class="w">本周 08-17 ~ 08-23 · 今天 2026-08-21 周五</div>
       </div>
     </div>
-  </header>
+    <div class="header-note">生成日期：2026-08-21 · 数据来源：云效 · Lingbot 2.0 项目</div>
+  </div>
 
-  <nav class="nav shell" aria-label="页面导航"><div class="nav-inner">
-    <a class="active" href="#overview">项目概览</a><a href="#gantt">甘特图</a><a href="#timeline">里程碑时间轴</a><a href="#scope">建设范围</a><a href="#people">人员与职责</a><a href="#flow">推进链路</a>
-  </div></nav>
+  <div class="notice">
+    <span class="tag">重要提醒</span>
+    <div class="txt">
+      请关注项目状态：<b>本周（第 34 周）有 8 项需完成</b>，其中 <b>今日到期 4 项</b>（杨云聪 2 项、熊家福 2 项），
+      另 <b>已逾期 0 项</b>。
+      请各位及时更新自己执行项的状态，若存在卡点或阻塞，请在对应需求下说明原因并同步大家。
+    </div>
+  </div>
 
-  <main class="shell">
-    <section class="section" id="overview-details">
-      <div class="section-head"><div><div class="kicker">Project overview</div><h2>项目阶段与关键节点</h2></div><p>项目范围、阶段排期、交付物和人员分工。</p></div>
-      <div class="summary-grid">
-        <div class="summary-card accent"><div class="num">69</div><div class="name">总工期（工作日）</div><div class="note">2026.08.03—2026.11.12</div></div>
-        <div class="summary-card"><div class="num">4</div><div class="name">高价值 AI 能力</div><div class="note">PPT、研究、会议转录、联网搜索</div></div>
-        <div class="summary-card"><div class="num">6</div><div class="name">阶段里程碑</div><div class="note">方案确认、开发、联调、测试、上线</div></div>
-        <div class="summary-card"><div class="num">11.11</div><div class="name">初步上线</div><div class="note">11.12 监控并完成阶段收尾</div></div>
+  <div class="stats">
+    <div class="stat" style="--c:#E6892B">
+      <div class="num">8</div><div class="lbl">本周需完成</div><div class="sub">计划完成 08-17 ~ 08-23</div>
+    </div>
+    <div class="stat" style="--c:#0FA3B1">
+      <div class="num">4</div><div class="lbl">今日到期</div><div class="sub">计划完成 = 08-21</div>
+    </div>
+    <div class="stat" style="--c:#D64545">
+      <div class="num">0</div><div class="lbl">已逾期</div><div class="sub">超期未完成</div>
+    </div>
+    <div class="stat" style="--c:#2FA47A">
+      <div class="num">6</div><div class="lbl">处理中</div><div class="sub">进行中·开发中任务</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head" style="--c:#E6892B;--cbg:#FFF3E2">
+      <span class="dot"></span><h2>本日需完成</h2><span class="count">4 项</span>
+      <span class="range">计划完成 = 08-21 周五</span>
+    </div>
+
+    <div class="today-card">
+      <span class="badge">今日到期</span>
+      <div>
+        <div class="name">主智能体与企业智能体后端解耦分发机制设计开发 <span class="tag-lv">QIBR-357</span></div>
+        <div class="meta">执行人：杨云聪 · 待处理 · 计划完成 08-21 23:59</div>
       </div>
-    </section>
+      <div class="right">剩余 0 天</div>
+    </div>
 
-    <section class="section" id="gantt">
-      <div class="section-head"><div><div class="kicker">Gantt view</div><h2>项目甘特图</h2></div><p>按周展示各阶段的工期与并行关系。阶段 1、阶段 2 同期开展；上线周单独标出初步上线与监控节点。</p></div>
-      <div class="gantt-panel"><div class="gantt">
-        <div class="gantt-head"><span></span><span class="month">8 月</span><span class="month sep">9 月</span><span class="month oct">10 月</span><span class="month nov">11 月</span></div>
-        <div class="gantt-head"><span></span><span>03</span><span>10</span><span>17</span><span>24</span><span>31</span><span>07</span><span>14</span><span>21</span><span>28</span><span>05</span><span>12</span><span>19</span><span>26</span><span>02</span><span>09</span></div>
-        <div class="gantt-row"><div class="gantt-label">阶段 0<small>方案确认</small></div><div class="gantt-bar" style="grid-column:2 / span 2">08.03–08.14</div></div>
-        <div class="gantt-row"><div class="gantt-label">阶段 1<small>AI/后端基础开发</small></div><div class="gantt-bar" style="grid-column:4 / span 6">08.17–09.25</div></div>
-        <div class="gantt-row"><div class="gantt-label">阶段 2<small>前端开发与页面集成</small></div><div class="gantt-bar green" style="grid-column:4 / span 6">08.17–09.25</div></div>
-        <div class="gantt-row"><div class="gantt-label">阶段 3<small>系统联调</small></div><div class="gantt-bar" style="grid-column:10 / span 4">09.28–10.23</div></div>
-        <div class="gantt-row"><div class="gantt-label">阶段 4<small>测试与问题修复</small></div><div class="gantt-bar green" style="grid-column:14 / span 2">10.26–11.05</div></div>
-        <div class="gantt-row"><div class="gantt-label">阶段 5<small>UAT、上线与监控</small></div><div class="gantt-bar gold" style="grid-column:15 / span 2">11.08–11.12</div></div>
-        <div class="gantt-row"><div class="gantt-label">上线节点<small>关键运营动作</small></div><div class="gantt-milestone" style="grid-column:15 / span 2">11.11 初步上线 · 11.12 监控</div></div>
-      </div><div class="gantt-legend"><span><i></i>能力与系统开发</span><span><i class="green"></i>页面集成与测试</span><span><i class="gold"></i>UAT / 上线准备</span></div></div>
-    </section>
-
-    <section class="section" id="timeline">
-      <div class="section-head"><div><div class="kicker">Milestones</div><h2>里程碑时间轴</h2></div><p>每个节点都有明确目标、交付物和负责人，阶段之间按依赖关系衔接。</p></div>
-      <div class="timeline">
-        <article class="milestone current"><div class="dot">0</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 00</div><h3>产品与技术方案确认</h3></div><div class="period">08.03 — 08.14</div></div><p>锁定本期范围、主流程、原型、UI/UE 方案、技术方案与接口边界，形成可启动的共同基线。</p><div class="deliverables"><span>主 PRD 范围</span><span>Web / 移动端原型</span><span>UI/UE 设计稿</span><span>技术方案与接口清单</span></div><div class="owner-line"><b>核心负责人</b>李飞 · 熊家园 · 唐伟丹 · 杨云聪 · 农德华 · 汪利钢</div></div></article>
-        <article class="milestone"><div class="dot">1</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 01</div><h3>AI 能力与后端基础开发</h3></div><div class="period">08.17 — 09.25</div></div><p>并行完成主智能体、联网搜索、三项技能、HiAgent 接入及后端基础接口，为端到端联调提供能力底座。</p><div class="deliverables"><span>智能体框架与技能路由</span><span>AI PPT</span><span>Deep Research</span><span>会议转录</span><span>后台权限接口</span></div><div class="owner-line"><b>核心负责人</b>唐伟丹 · 罗志鹏 · 辜文祥 · 杨云聪 · 农德华</div></div></article>
-        <article class="milestone"><div class="dot">2</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 02</div><h3>前端开发与页面集成</h3></div><div class="period">08.17 — 09.25</div></div><p>与后端能力并行，完成 Web/移动端页面、输入区、长任务状态、下载入口、智能体广场与后台管理页面集成。</p><div class="deliverables"><span>普通 Chat 页面</span><span>技能前端接入</span><span>智能体广场</span><span>后台管理前端</span><span>UI/UE 走查</span></div><div class="owner-line"><b>核心负责人</b>汪利钢 · 熊家园</div></div></article>
-        <article class="milestone"><div class="dot">3</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 03</div><h3>系统联调</h3></div><div class="period">09.28 — 10.23</div></div><p>围绕核心用户路径完成端到端跑通，统一验证触发、任务状态、结果展示、下载与权限链路。</p><div class="deliverables"><span>普通 Chat 联调</span><span>联网搜索</span><span>三项技能端到端</span><span>智能体广场</span><span>后台管理</span></div><div class="owner-line"><b>核心负责人</b>汪利钢 · 杨云聪 · 农德华 · 各技能 Owner</div></div></article>
-        <article class="milestone"><div class="dot">4</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 04</div><h3>测试与问题修复</h3></div><div class="period">10.26 — 11.05</div></div><p>完成冒烟、功能、AI 效果、后台和企业微信真机测试，集中处理缺陷并完成回归验证。</p><div class="deliverables"><span>冒烟测试</span><span>AI 功能测试</span><span>Web / 移动端测试</span><span>真机测试</span><span>缺陷闭环</span></div><div class="owner-line"><b>核心负责人</b>罗芬 · 各开发负责人</div></div></article>
-        <article class="milestone"><div class="dot">5</div><div class="milestone-card"><div class="milestone-top"><div><div class="phase">PHASE 05</div><h3>UAT、上线与监控</h3></div><div class="period">11.08 — 11.12</div></div><p>11 月 11 日初步上线，11 月 12 日监控运行情况并完成阶段收尾与结果确认。</p><div class="deliverables"><span>UAT 验收</span><span>11.11 初步上线</span><span>11.12 运行监控</span><span>阶段收尾</span><span>回滚方案</span></div><div class="owner-line"><b>核心负责人</b>李飞 · 系统开发团队 · 罗芬</div></div></article>
+    <div class="today-card">
+      <span class="badge">今日到期</span>
+      <div>
+        <div class="name">智能体广场接口开发 <span class="tag-lv">QIBR-361</span></div>
+        <div class="meta">执行人：杨云聪 · 待处理 · 计划完成 08-21 23:59</div>
       </div>
-    </section>
+      <div class="right">剩余 0 天</div>
+    </div>
 
-    <section class="section" id="scope">
-      <div class="section-head"><div><div class="kicker">Scope</div><h2>本期建设范围</h2></div><p>围绕主入口、核心技能、智能体生态和管理能力形成完整闭环。</p></div>
-      <div class="columns"><div class="panel"><h3>面向用户的核心能力</h3><div class="scope-list">
-        <div class="scope-item"><div class="scope-icon">01</div><div><b>普通 Chat 主智能体</b><span>Pi 智能体框架、云端大模型、联网搜索和附件理解</span></div></div>
-        <div class="scope-item"><div class="scope-icon">02</div><div><b>AI PPT 技能</b><span>需求收集 → 大纲确认 → PPT 生成 → 下载</span></div></div>
-        <div class="scope-item"><div class="scope-icon">03</div><div><b>Deep Research 技能</b><span>研究计划、资料检索分析、研究报告生成与下载</span></div></div>
-        <div class="scope-item"><div class="scope-icon">04</div><div><b>会议转录技能</b><span>录音上传、ASR 转写、会议纪要、逐字稿查看与下载</span></div></div>
-        <div class="scope-item"><div class="scope-icon">05</div><div><b>智能体广场与历史对话</b><span>企业智能体、计财智能体、HiAgent 统一展示与历史搜索</span></div></div>
-      </div></div><div class="panel"><h3>面向运营与管理的能力</h3><div class="scope-list">
-        <div class="scope-item"><div class="scope-icon">A</div><div><b>后台权限管理中心</b><span>主智能体管理、计财智能体对话管理与权限配置</span></div></div>
-        <div class="scope-item"><div class="scope-icon">B</div><div><b>数据与日志增强</b><span>补充技能使用分析字段，为后续使用分析与成本估算提供依据</span></div></div>
-        <div class="scope-item"><div class="scope-icon">C</div><div><b>统一任务状态与交付</b><span>长任务进度、失败重试、文件下载和结果交付口径统一</span></div></div>
-        <div class="scope-item"><div class="scope-icon">D</div><div><b>Web / 移动端一致体验</b><span>Web 与企业微信 H5 核心使用路径统一，支持真机验证</span></div></div>
-      </div></div></div>
-    </section>
+    <div class="today-card">
+      <span class="badge">今日到期</span>
+      <div>
+        <div class="name">智能体广场页面开发 <span class="tag-lv">QIBR-363</span></div>
+        <div class="meta">执行人：熊家福 · 待处理 · 计划完成 08-21 23:59</div>
+      </div>
+      <div class="right">剩余 0 天</div>
+    </div>
 
-    <section class="section" id="people">
-      <div class="section-head"><div><div class="kicker">Organization</div><h2>人员划分与责任边界</h2></div><p>产品负责方向和验收，模块 Owner 对能力落地闭环，系统团队负责集成与发布，测试团队负责质量门禁。</p></div>
-      <div class="panel"><div class="team-grid">
-        <div class="team"><div class="team-title">产品与体验 <em>方向 / 体验</em></div><p>整体规划、PRD、原型、项目排期、UI/UE 与设计走查</p><div class="people"><span>李飞 · 产品负责人</span><span>熊家园 · UI/UE</span></div></div>
-        <div class="team"><div class="team-title">AI 能力与模块 Owner <em>能力 / 交付</em></div><p>主智能体、联网搜索、会议转录、AI PPT、Deep Research、HiAgent</p><div class="people"><span>唐伟丹</span><span>罗志鹏</span><span>辜文祥</span><span>林建余</span></div></div>
-        <div class="team"><div class="team-title">系统开发 <em>集成 / 发布</em></div><p>前端页面、后端接口、后台权限、页面集成、发布准备</p><div class="people"><span>汪利钢 · 前端</span><span>杨云聪 · 后端</span><span>农德华 · 权限</span></div></div>
-        <div class="team"><div class="team-title">测试与基础设施 <em>质量 / 稳定</em></div><p>功能测试、AI 效果测试、真机测试、缺陷闭环、模型与服务器</p><div class="people"><span>罗芬 · 测试</span><span>樊瑶 · 模型与服务器</span></div></div>
-      </div></div>
-    </section>
+    <div class="today-card">
+      <span class="badge">今日到期</span>
+      <div>
+        <div class="name">研究页面开发 <span class="tag-lv">QIBR-365</span></div>
+        <div class="meta">执行人：熊家福 · 待处理 · 计划完成 08-21 23:59</div>
+      </div>
+      <div class="right">剩余 0 天</div>
+    </div>
+  </div>
 
-    <section class="section" id="flow">
-      <div class="section-head"><div><div class="kicker">Delivery logic</div><h2>推进链路</h2></div><p>用四个判断点控制项目从“方案可行”走向“上线可用”。</p></div>
-      <div class="flow"><div class="flow-step"><div class="index">01 · 锁定基线</div><b>范围与方案一致</b><p>PRD、原型、接口边界和技术约束达成共识。</p></div><div class="flow-step"><div class="index">02 · 并行建设</div><b>能力与页面同步</b><p>AI/后端与前端/页面集成并行推进，减少等待。</p></div><div class="flow-step"><div class="index">03 · 端到端验证</div><b>核心链路跑通</b><p>从触发到结果、下载、权限完成完整联调。</p></div><div class="flow-step"><div class="index">04 · 质量门禁</div><b>验收与发布就绪</b><p>测试、UAT、上线与回滚方案全部确认。</p></div></div>
-    </section>
-  </main>
-  <footer><div class="shell">Lingbot 2.0 项目排期汇报 · 讨论稿 · 2026.07.08</div></footer>
-  <script>
-    const links=[...document.querySelectorAll('.nav a')];
-    const sections=links.map(a=>document.querySelector(a.getAttribute('href')));
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));}}),{rootMargin:'-30% 0px -60% 0px',threshold:0});
-    sections.forEach(section=>section&&observer.observe(section));
-  </script>
+  <div class="section">
+    <div class="sec-head" style="--c:#E6892B;--cbg:#FFF3E2">
+      <span class="dot"></span><h2>本周需完成</h2><span class="count">8 项</span>
+      <span class="range">第 34 周 · 08-17 ~ 08-23</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th><th>任务</th><th>执行人</th><th>说明</th><th>状态</th><th>计划完成</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="serial">QIBR-362</td>
+            <td class="subject">首页对话框、最近对话页面开发</td>
+            <td>熊家福</td>
+            <td><div class="hint">开发任务</div></td>
+            <td><span class="pill pl-done">已完成</span></td>
+            <td class="due"><b>08-19 周三</b><br><span class="rest">已按时完成</span></td>
+          </tr>
+          <tr>
+            <td class="serial">QIBR-378</td>
+            <td class="subject">Agent 架构梳理</td>
+            <td>唐伟丹</td>
+            <td><div class="hint">开发任务</div></td>
+            <td><span class="pill pl-done">已完成</span></td>
+            <td class="due"><b>08-19 周三</b><br><span class="rest">已按时完成</span></td>
+          </tr>
+          <tr>
+            <td class="serial">QIBR-354</td>
+            <td class="subject">PPT模板选择调试</td>
+            <td>罗志鹏</td>
+            <td><div class="hint">技术设计</div></td>
+            <td><span class="pill pl-done">已完成</span></td>
+            <td class="due"><b>08-20 周四</b><br><span class="rest">延期完成</span></td>
+          </tr>
+          <tr>
+            <td class="serial">QIBR-357</td>
+            <td class="subject">主智能体与企业智能体后端解耦分发机制设计开发</td>
+            <td>杨云聪</td>
+            <td><div class="hint">开发任务</div></td>
+            <td><span class="pill pl-today">今日到期 · 待处理</span></td>
+            <td class="due"><b>08-21 周五</b><br><span class="rest" style="color:#B85E0E">剩余 0 天</span></td>
+          </tr>
+          <tr>
+            <td class="serial">QIBR-361</td>
+            <td class="subject">智能体广场接口开发</td>
+            <td>杨云聪</td>
+            <td><div class="hint">开发任务</div></td>
+            <td><span class="pill pl-today">今日到期 · 待处理</span></td>
+            <td class="due"><b>08-21 周五</b><br><span class="rest" style="color:#B85E0E">剩余 0 天</span></td>
+          </tr>
+          <tr>
+            <td class="serial">QIBR-363</td>
+            <td class="subject">智能体广场页面开发</td>
+            <td>熊家福</td>
+            <td><div class="hint">开发任务</div></td>
+            <td><span class="pill pl-today">今日到期 · 待处理</span></td>
+            <td class="due"><b>08-21 周五</b><br><span class="rest" style="color:#B85E0E">剩余 0 天</span></td>
+          </tr>
+          <tr>
+            <td class="serial">QIBR-365</td>
+            <td class="subject">研究页面开发</td>
+            <td>熊家福</td>
+            <td><div class="hint">开发任务</div></td>
+            <td><span class="pill pl-today">今日到期 · 待处理</span></td>
+            <td class="due"><b>08-21 周五</b><br><span class="rest" style="color:#B85E0E">剩余 0 天</span></td>
+          </tr>
+          <tr>
+            <td class="serial">QIBR-386</td>
+            <td class="subject">主智能体开发</td>
+            <td>姚凯烽</td>
+            <td><div class="hint">开发任务</div></td>
+            <td><span class="pill pl-prog">处理中</span></td>
+            <td class="due"><b>08-22 周六</b><br><span class="rest">剩余 1 天</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head" style="--c:#D64545;--cbg:#FDECEC">
+      <span class="dot"></span><h2>已逾期</h2><span class="count">0 项</span>
+    </div>
+    <div class="empty">当前无逾期项。逾期口径：未完成（待处理/处理中）且「计划完成时间」早于今天（2026-08-21）。已完成项不计入逾期。</div>
+  </div>
+
+  <div class="footer">
+    请各位及时更新需求状态，如有卡点或阻塞请说明原因并同步<br>
+    <div class="rule">LINGBOT · 每周任务看板 · 第 34 周 · 2026-08-21</div>
+  </div>
+
+</div>
 </body>
 </html>
